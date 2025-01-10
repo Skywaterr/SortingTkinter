@@ -2,7 +2,7 @@ from tkinter import Canvas, Tk
 from copy import deepcopy
 import time
 import random
-from algorithms import insertionSort
+from algorithms import insertionSort, quickSort_helper
 
 # Draw some rectangles of varying size based on the window, then start swapping
 
@@ -135,7 +135,7 @@ def demonstration(sorting_canvas, algorithm):
         window is closed. """
     while True:
         # Generate some random data
-        array = [random.randint(1, 10000) for x in range(200)]
+        array = [random.randint(1, 10000) for x in range(500)]
 
         # Plot the array on the graph in terms of rectangles
         sorting_canvas.scramble_rectangles(array)
@@ -156,8 +156,8 @@ def main():
     sc = SortingCanvas(master = tk, bg = "black")
     sc.place(relx = 0, rely = 0, relwidth = 1, relheight = 1)
 
-    demonstration(sc, insertionSort)
-    #insertion_sort_demonstration(sc, quickSort_helper)
+    #demonstration(sc, insertionSort)
+    #demonstration(sc, quickSort_helper)
 
     tk.mainloop()
 

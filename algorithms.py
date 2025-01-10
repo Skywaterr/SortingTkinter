@@ -1,5 +1,7 @@
-def partition(array, low, high):
+swaps = []
 
+def partition(array, low, high):
+    global swaps
     # choose the rightmost element as pivot
     pivot = array[high]
 
@@ -30,7 +32,7 @@ def partition(array, low, high):
 
 
 def quickSort(array, low, high):
-    swaps = []
+    global swaps
     if low < high:
 
         # Find pivot element such that
@@ -43,10 +45,19 @@ def quickSort(array, low, high):
 
         # Recursive call on the right of pivot
         quickSort(array, pi + 1, high)
+    return swaps
+
+
+
+
+# Only the functions beyond this line can be used as valid algorithms for the sorter
+
+
 
 
 def quickSort_helper(array):
-    quickSort(array, 0, len(array) - 1)
+    swaps = quickSort(array, 0, len(array) - 1)
+    return swaps
 
 
 def insertionSort(arr):
