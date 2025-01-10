@@ -76,11 +76,9 @@ def merge(arr, l, m, r):
     while i < n1 and j < n2:
         if L[i] <= R[j]:
             arr[k] = L[i]
-            swaps.append((k, i))
             i += 1
         else:
             arr[k] = R[j]
-            swaps.append((k, j))
             j += 1
         k += 1
  
@@ -113,7 +111,7 @@ def mergeSort(arr, l, r):
         mergeSort(arr, l, m)
         mergeSort(arr, m+1, r)
         merge(arr, l, m, r)
-        
+
     return swaps
 
 # Only the functions beyond this line can be used as valid algorithms for the sorter
@@ -144,4 +142,42 @@ def insertionSort(arr):
             swaps.append((j + 1, j))
             j -= 1
         arr[j + 1] = key
+    return swaps
+
+def bubble_sort(arr):
+    swaps = []
+    n = len(arr)
+    # Traverse through all array elements
+    for i in range(n):
+        # Flag to optimize and check if any swap was made
+        swapped = False
+        # Last i elements are already sorted, so we avoid checking them
+        for j in range(0, n-i-1):
+            # Swap if the element found is greater than the next element
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+                swaps.append((j, j + 1))
+                swapped = True
+        # If no two elements were swapped by inner loop, then the array is sorted
+        if not swapped:
+            break
+    return swaps
+
+
+
+def selection_sort(arr):
+    swaps = []
+    n = len(arr)
+    # Traverse through all elements in the array
+    for i in range(n):
+        # Find the minimum element in the unsorted part of the array
+        min_index = i
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_index]:
+                min_index = j
+        
+        # Swap the found minimum element with the first element of the unsorted part
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+        swaps.append((i, min_index))
+    
     return swaps

@@ -2,7 +2,7 @@ from tkinter import Canvas, Tk
 from copy import deepcopy
 import time
 import random
-from algorithms import insertionSort, quickSort_helper, mergeSort_helper, clear_cache
+from algorithms import insertionSort, quickSort_helper, bubble_sort, selection_sort, clear_cache
 
 # Draw some rectangles of varying size based on the window, then start swapping
 
@@ -159,7 +159,8 @@ def main():
 
     #demonstration(sc, insertionSort)
     #demonstration(sc, quickSort_helper)
-    demonstration(sc, mergeSort_helper)
+    #demonstration(sc, bubble_sort)
+    #demonstration(sc, selection_sort)
 
     tk.mainloop()
 
